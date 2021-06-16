@@ -1,4 +1,5 @@
 class Tree < ActiveRecord::Base
-    has_many :journals
     belongs_to :user
+    has_many :tree_journals
+    has_many :journals, through: :tree_journals
 end
