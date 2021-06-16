@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_171256) do
+ActiveRecord::Schema.define(version: 2021_06_16_161649) do
 
   create_table "journals", force: :cascade do |t|
     t.date "journal_time"
@@ -19,11 +19,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_171256) do
     t.string "health_rating"
     t.string "litter_rating"
     t.string "notes"
-  end
-
-  create_table "tree_journals", force: :cascade do |t|
     t.integer "tree_id"
-    t.integer "journal_id"
   end
 
   create_table "trees", force: :cascade do |t|
@@ -32,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_171256) do
     t.string "tree_map_no"
     t.string "species"
     t.integer "user_id"
+    t.integer "journal_id"
   end
 
   create_table "users", force: :cascade do |t|

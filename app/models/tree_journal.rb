@@ -1,4 +1,4 @@
-class TreeJournal < ActiveRecord::Base
-    belongs_to :journal
-    belongs_to :tree
-end
+# class TreeJournal < ActiveRecord::Base
+#     belongs_to :journals
+#     belongs_to :trees
+# end
