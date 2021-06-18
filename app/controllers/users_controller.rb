@@ -53,6 +53,14 @@ class UsersController < ApplicationController
     end
 
     get '/dashboard' do
-        erb :'users/show'
+        if Helper.is_logged_in?(session)
+            @user = Helper.current_user(session)
+            @trees = Tree.all
+            @journals = Journal.all
+
+            erb :'users/show'
+        else
+            redirect to '/login'
+        end
     end
 end

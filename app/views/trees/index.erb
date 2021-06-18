@@ -1,0 +1,11 @@
+<h2>List O' Trees</h2>
+
+<% @trees.each do |tree| %>
+<ul><img src="<%= tree.image %>">
+    <br>
+    <b><%= tree.nickname %></b> #<%= tree.tree_map_no %>
+    <br>
+    Species: <%= tree.species %></ul>
+    <br>
+    <a href="/trees/<%= tree.id %>">more details</a>
+<% end %>

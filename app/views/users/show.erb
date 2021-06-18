@@ -1,0 +1,17 @@
+<h1>Hi, <%= @user.username %></h1>
+<h2>Your Trees</h2>
+<br>
+<% @user.trees.each do |user_tree|%>
+    <ul><a href="/trees/<%= user_tree.id %>"> <%= user_tree.nickname%></a></ul>
+<% end%>
+<br>
+<h2>Recent Journal Entries</h2>
+<br>
+<%@user.journals.each do |journal|%>
+    <ul><a href="/journals/<%= journal.id %>"> <%= journal.date%> - <%= journal.notes %></a></ul>
+<h2>Recently Added Trees</h2>
+<br>
+<% @trees.each do |tree|%>
+    <img src="<%=tree.image%>">
+<% end %>
+<br>

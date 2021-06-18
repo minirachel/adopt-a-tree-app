@@ -1,0 +1,69 @@
+<h1>New Journal Entry</h1><br>
+
+<form action="/journals" method="POST">
+    <select name="tree_id">
+        <% @user.trees.each do |tree|%>
+            <option value="<%= tree.id%>"><%= tree.nickname %></option>
+        <% end %>
+    </select>
+    <br>
+    <br>
+
+    Date Cared For:<br>
+    <input type="date" name="date_watered">
+    <br>
+    <br>
+
+    Activites:<br>
+    <input type="checkbox" name="activities" value="watered">
+    <label for="watered">Watered</label><br>
+    <input type="checkbox" name="activities" value="mulched">
+    <label for="mulched">Mulched</label><br>
+    <input type="checkbox" name="activities" value="cleaned">
+    <label for="cleaned">Cleaned</label><br>
+    <br>
+    <br>
+
+    Health Rating:<br>
+    <input type="radio" name="health_rating" value="great">
+    <label for="great">Great</label><br>
+    <input type="radio" name="health_rating" value="good">
+    <label for="good">Good</label><br>
+    <input type="radio" name="health_rating" value="fine">
+    <label for="fine">Fine</label><br>
+    <input type="radio" name="health_rating" value="meh">
+    <label for="meh">meh</label><br>
+    <input type="radio" name="health_rating" value="help">
+    <label for="help">help</label><br>
+    <br>
+    <br>
+
+    Litter Rating:<br>
+    <input type="radio" name="litter_rating" value="great">
+    <label for="great">Great</label><br>
+    <input type="radio" name="litter_rating" value="good">
+    <label for="good">Good</label><br>
+    <input type="radio" name="litter_rating" value="fine">
+    <label for="fine">Fine</label><br>
+    <input type="radio" name="litter_rating" value="meh">
+    <label for="meh">meh</label><br>
+    <input type="radio" name="litter_rating" value="help">
+    <label for="help">help</label><br>
+    <br>
+    <br>
+
+    Notes: <input type="text" name="notes"><br>
+    <br>
+
+    <input type="submit" value="Post journal entry">
+</form>
+
+<!-- create_table "journals", force: :cascade do |t|
+t.date "journal_time"
+X t.string "activities"
+X t.date "date_watered"
+X t.string "health_rating"
+X t.string "litter_rating"
+X t.string "notes"
+X t.integer "tree_id"
+end -->

@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>AdoptATreeApp</title>
+    <title>Adopt-A-Tree App</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,12 +15,24 @@
   </head>
   <body>
     <div class="wrapper">
-
+      <header>
+        <div class="logo">
+           <h1>Adopt-A-Tree</h1>
+        </div>
+        <% if Helper.is_logged_in?(session)%>
+        <%= @error %>
+          <div class="user"><a href="/dashboard">dashboard</a></div>
+          <div class="user"><a href="/logout">logout</a></div>
+        <% else %>
+          <div class="user"><a href="/login">login</a></div>
+          <div class="user"><a href="/signup">sign up</a></div>
+        <% end %>
+      </header>
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2021 <strong>AdoptATreeApp</strong></small>
-        <a href="/logout">logout</a>
+        <small>&copy; 2021 <strong>Adopt-A-Tree App</strong></small>
+        
       </footer>
     </div>
 

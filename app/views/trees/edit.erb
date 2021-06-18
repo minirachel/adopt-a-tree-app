@@ -1,0 +1,14 @@
+<% if Helper.is_logged_in?(session)%>
+<%= @error %>
+    <h1>Edit your Tree</h1>
+    <form action="/trees" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <input type="text" name="nickname" value="Tree's Nickname"><br><br>
+        <input type="text" name="image" value="Image URL"><br><br>
+        <input type="text" name="tree_map_no" value="NYC Tree Map ID"><br><br>
+        <input type="text" name="species" value="Tree Species"><br><br>
+        <input type="submit" value="Edit Tree">
+    </form>
+<% else %>
+    <h1> You Must Be <a href="/login">Logged in</a> to edit this tree.</h1>
+<% end %>

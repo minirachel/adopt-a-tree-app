@@ -1,0 +1,21 @@
+<h1>About <%= @tree.nickname %></h1>
+
+<img src="<%= @tree.image %>">
+<br>
+NYC Parks ID #<%= @tree.tree_map_no %>
+<br>
+Species: <%= @tree.species %></ul>
+
+<% if Helper.is_logged_in?(session) %>
+<%= @error %>
+    <a href="/journals/new">Add a Journal Entry</a>
+    <br>
+    <a href="/trees/<%= @tree.id%>/edit">Edit Tree</a>
+    <br>
+    <form action='/trees/<%= @tree.id %>/delete' method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">    
+        <input type="submit" id="Delete Tree" value="Delete Tree">
+    </form>
+<% else %>
+
+<% end %>
