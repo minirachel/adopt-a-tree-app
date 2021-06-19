@@ -5,11 +5,12 @@
     <ul><a href="/trees/<%= user_tree.id %>"> <%= user_tree.nickname%></a></ul>
 <% end%>
 <br>
-<h2>Recent Journal Entries</h2>
+<h2>Recent Journal Entries</h2> <a href="/journals/new">add journal</a>
 <br>
-<%@user.journals.each do |journal|%>
-    <ul><a href="/journals/<%= journal.id %>"> <%= journal.date%> - <%= journal.notes %></a></ul>
-<h2>Recently Added Trees</h2>
+<% @user.journals.each do |journal|%>
+    <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%> - <%= journal.notes %></a></ul>
+<% end %>
+<h2>Recently Added Trees</h2> <a href="/trees/new">add tree</a>
 <br>
 <% @trees.each do |tree|%>
     <img src="<%=tree.image%>">
