@@ -1,13 +1,13 @@
-rachel = User.create(username:"rachel", email:"rachel@rachel.net", password_digest:"password")
-wimpy_boi = rachel.trees.create(nickname:"wimpy boi", tree_map_no:"1050758", species:"Flowering Dogwood")
-june = wimpy_boi.journals.create(activities:"weeded", health_rating:"fine", litter_rating:"horrible", notes:"large boxes present")
-july = wimpy_boi.journals.create(activities:"mulched", health_rating:"good", litter_rating:"fine", notes:"bike leaning against")
+# rachel = User.create(username:"rachel", email:"rachel@rachel.net", password_digest:"password")
+# wimpy_boi = rachel.trees.create(nickname:"wimpy boi", tree_map_no:"1050758", species:"Flowering Dogwood")
+# june = wimpy_boi.journals.create(activities:"weeded", health_rating:"fine", litter_rating:"horrible", notes:"large boxes present")
+# july = wimpy_boi.journals.create(activities:"mulched", health_rating:"good", litter_rating:"fine", notes:"bike leaning against")
 
-emmylou = User.create(username:"emmylou", email:"emmylou@mrplow.com", password_digest:"password123")
-wildflower = emmylou.trees.create(nickname:"wildflowers", tree_map_no:"42069", species:"Flowering Dogwood")
-big_tree = emmylou.trees.create(nickname:"ol' big one", tree_map_no:"39170134", species:"London Planetree")
-june = wildflower.journals.create(activities:"watered", health_rating:"good", litter_rating:"fine", notes:"no flowers")
-july = wildflower.journals.create(activities:"mulched", health_rating:"poor", litter_rating:"good", notes:"some flowers!!")
+# emmylou = User.create(username:"emmylou", email:"emmylou@mrplow.com", password_digest:"password123")
+# wildflower = emmylou.trees.create(nickname:"wildflowers", tree_map_no:"42069", species:"Flowering Dogwood")
+# big_tree = emmylou.trees.create(nickname:"ol' big one", tree_map_no:"39170134", species:"London Planetree")
+# june = wildflower.journals.create(activities:"watered", health_rating:"good", litter_rating:"fine", notes:"no flowers")
+# july = wildflower.journals.create(activities:"mulched", health_rating:"poor", litter_rating:"good", notes:"some flowers!!")
 
 
 # create_table "journals", force: :cascade do |t|

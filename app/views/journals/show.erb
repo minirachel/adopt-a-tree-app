@@ -1,13 +1,24 @@
 
+<h2><%= @user.username %> - <%= @journal.journal_time %></h2>
+<br>
+<br>
+Date Watered: <%= @journal.date_watered %>
+<br>
+Activities Achieved: <%= @journal.activities %>
+<br>
+Health: <%= @journal.health_rating %> Litter: <%= @journal.litter_rating %>
+<br>
+Notes: <%= @journal.notes %>
 
+<% if Helper.is_logged_in?(session) %>
+<%= @error %>
+    <br>
+    <a href="/journals/<%= @journal.id%>/edit">Journal Tree</a>
+    <br>
+    <form action='/journals/<%= @journal.id %>/delete' method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">    
+        <input type="submit" id="Delete Tree" value="Delete Tree">
+    </form>
+<% else %>
 
-
-<!-- create_table "journals", force: :cascade do |t|
-t.date "journal_time"
-t.string "activities"
-t.date "date_watered"
-t.string "health_rating"
-t.string "litter_rating"
-t.string "notes"
-t.integer "tree_id"
-end -->
+<% end %>

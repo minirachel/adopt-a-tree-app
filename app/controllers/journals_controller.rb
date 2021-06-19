@@ -36,6 +36,7 @@ class JournalsController < ApplicationController
     get '/journals/:id' do
         if Helper.is_logged_in?(session)
             @journal = Journal.find(params[:id])
+            @user = User.find(@journal.user_id)
             erb :'/journal/show'
         else
             redirect to '/login'
