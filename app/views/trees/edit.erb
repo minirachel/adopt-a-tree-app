@@ -1,12 +1,12 @@
 <% if Helper.is_logged_in?(session)%>
 <%= @error %>
     <h1>Edit your Tree</h1>
-    <form action="/trees" method="POST">
+    <form action='/trees/<%= @tree.id %>/edit' method="POST">
         <input id="hidden" type="hidden" name="_method" value="patch">
-        <input type="text" name="nickname" value="Tree's Nickname"><br><br>
-        <input type="text" name="image" value="Image URL"><br><br>
-        <input type="text" name="tree_map_no" value="NYC Tree Map ID"><br><br>
-        <input type="text" name="species" value="Tree Species"><br><br>
+        <input type="text" name="tree_info[nickname]" value="<%= @tree.nickname %>"><br><br>
+        <input type="text" name="tree_info[image]" value="<%= @tree.image %>"><br><br>
+        <input type="text" name="tree_info[tree_map_no]" value="<%= @tree.tree_map_no %>"><br><br>
+        <input type="text" name="tree_info[species]" value="<%= @tree.species %>"><br><br>
         <input type="submit" value="Edit Tree">
     </form>
 <% else %>

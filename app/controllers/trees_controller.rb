@@ -18,7 +18,7 @@ class TreesController < ApplicationController
     end
 
     post '/trees' do
-        if params[:nickname] != "" && params[:species] != ""
+        if Tree.new(params).valid?
             @user = Helper.current_user(session)
             @user.trees.create(params)
             redirect to '/trees'
@@ -37,18 +37,6 @@ class TreesController < ApplicationController
         end
     end
 
-    delete '/trees/:id/delete' do
-        @tree = Tree.find(params[:id])
-
-        if Helper.current_user(session).id == @tree.user_id
-            @tree.delete
-            redirect to '/trees'
-        else
-            redirect to "/trees/#{@tree.id}"
-            flash[:message] = "You do not have permission to delete!"    
-        end
-    end
-
     get '/trees/:id/edit' do
         if Helper.is_logged_in?(session)
             @tree = Tree.find(params[:id])
@@ -61,7 +49,7 @@ class TreesController < ApplicationController
     patch '/trees/:id/edit' do
         @tree = Tree.find(params[:id])
 
-        if params[:nickname] != "" && params[:species] != ""
+        if Helper.current_user(session).id == @tree.user_id
             @tree.update(params)
             redirect to '/trees'
         else
@@ -69,6 +57,21 @@ class TreesController < ApplicationController
             flash[:message] = "Please type something to change your Tree!"
         end
     end
+
+
+    delete '/trees/:id/delete' do
+        @tree = Tree.find(params[:id])
+    
+
+        if Helper.current_user(session).id == @tree.user_id
+            @tree.delete
+            redirect to '/trees'
+        else
+            redirect to "/trees/#{@tree.id}"
+            flash[:message] = "You do not have permission to delete!"    
+        end
+    end
+
 
 
 

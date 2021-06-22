@@ -13,13 +13,13 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if !User.find_by(:email => params[:email]) && params[:username] != "" && params[:email] != "" && params[:password] != ""
+        if User.new(params).valid?
             @user = User.create(params)
             session[:user_id] = @user.id
             redirect to '/dashboard'
         else
             redirect to '/signup'
-            flash[:message] = "This email is already associated with an account. Please login."
+            flash[:message] = "This email is Useralready associated with an account. Please login."
         end
     end
 
