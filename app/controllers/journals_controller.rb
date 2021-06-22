@@ -37,10 +37,45 @@ class JournalsController < ApplicationController
         if Helper.is_logged_in?(session)
             @journal = Journal.find(params[:id])
             @user = User.find(@journal.user_id)
-            erb :'/journal/show'
+            erb :'/journals/show'
         else
             redirect to '/login'
         end
     end
+
+    delete '/journals/:id/delete' do
+        @journal = Journal.find(params[:id])
+
+        if Helper.current_user(session).id == @journal.user_id
+            @journal.delete
+            redirect to '/trees'
+        else
+            redirect to "/journals/#{@journal.id}"
+            flash[:message] = "You do not have permission to delete!"    
+        end
+    end
+
+    get '/journals/:id/edit' do
+        if Helper.is_logged_in?(session)
+            @user = Helper.current_user(session)
+            @journal = Journal.find(params[:id])
+            erb :'journals/edit'
+        else
+            redirect to '/login'
+        end
+    end
+
+    patch '/journals/:id/edit' do
+        @journal = Journal.find(params[:id])
+
+        if params[:tree_id] != "" && params[:activities] != ""
+            @journal.update(params)
+            redirect to '/journals'
+        else
+            redirect to "/journals/#{@journal.id}/edit"
+            flash[:message] = "Please type something to change your Tree!"
+        end
+    end
+
 
 end

@@ -1,6 +1,8 @@
 <h1>Hi, <%= @user.username %></h1>
 <h2>Your Trees</h2>
 <br>
+<a href="/trees/new">add tree</a>
+<br>
 <% @user.trees.each do |user_tree|%>
     <ul><a href="/trees/<%= user_tree.id %>"> <%= user_tree.nickname%></a></ul>
 <% end%>
@@ -10,9 +12,9 @@
 <% @user.journals.each do |journal|%>
     <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%> - <%= journal.notes %></a></ul>
 <% end %>
-<h2>Recently Added Trees</h2> <a href="/trees/new">add tree</a>
+<h2>Recently Added Trees</h2> 
 <br>
 <% @trees.each do |tree|%>
-    <img src="<%=tree.image%>">
+    <a href="/trees/<%= tree.id %>"><img src="<%=tree.image%>"></a>
 <% end %>
 <br>

@@ -1,0 +1,65 @@
+<% if Helper.is_logged_in?(session)%>
+<%= @error %>
+    <h1>Edit your Journal</h1>
+    <form action="/journals" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <select name="tree_id">
+            <% @user.trees.each do |tree|%>
+                <option value="<%= tree.id%>"><%= tree.nickname %></option>
+            <% end %>
+        </select>
+        <br>
+        <br>
+    
+        Date Cared For:<br>
+        <input type="date" name="date_watered" value="date_watered">
+        <br>
+        <br>
+    
+        Activites:<br>
+        <input type="checkbox" name="activities" value="watered">
+        <label for="watered">Watered</label><br>
+        <input type="checkbox" name="activities" value="mulched">
+        <label for="mulched">Mulched</label><br>
+        <input type="checkbox" name="activities" value="cleaned">
+        <label for="cleaned">Cleaned</label><br>
+        <br>
+        <br>
+    
+        Health Rating:<br>
+        <input type="radio" name="health_rating" value="great">
+        <label for="great">Great</label><br>
+        <input type="radio" name="health_rating" value="good">
+        <label for="good">Good</label><br>
+        <input type="radio" name="health_rating" value="fine">
+        <label for="fine">Fine</label><br>
+        <input type="radio" name="health_rating" value="meh">
+        <label for="meh">meh</label><br>
+        <input type="radio" name="health_rating" value="help">
+        <label for="help">help</label><br>
+        <br>
+        <br>
+    
+        Litter Rating:<br>
+        <input type="radio" name="litter_rating" value="great">
+        <label for="great">Great</label><br>
+        <input type="radio" name="litter_rating" value="good">
+        <label for="good">Good</label><br>
+        <input type="radio" name="litter_rating" value="fine">
+        <label for="fine">Fine</label><br>
+        <input type="radio" name="litter_rating" value="meh">
+        <label for="meh">meh</label><br>
+        <input type="radio" name="litter_rating" value="help">
+        <label for="help">help</label><br>
+        <br>
+        <br>
+    
+        Notes: <input type="text" name="notes" value="notes"><br>
+        <br>
+    
+        <input type="submit" value="Edit journal entry">
+    </form>
+
+    <% else %>
+        <h1> You Must Be <a href="/login">Logged in</a> to edit this tree.</h1>
+    <% end %>

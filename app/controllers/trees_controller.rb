@@ -52,7 +52,7 @@ class TreesController < ApplicationController
     get '/trees/:id/edit' do
         if Helper.is_logged_in?(session)
             @tree = Tree.find(params[:id])
-            erb :'/trees/edit'
+            erb :'trees/edit'
         else
             redirect to '/login'
         end
@@ -62,8 +62,6 @@ class TreesController < ApplicationController
         @tree = Tree.find(params[:id])
 
         if params[:nickname] != "" && params[:species] != ""
-            # @user = Helpers.current_user(session)
-            # @user.tweets.create(params)
             @tree.update(params)
             redirect to '/trees'
         else

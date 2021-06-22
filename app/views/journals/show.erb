@@ -1,6 +1,7 @@
 
 <h2><%= @user.username %> - <%= @journal.journal_time %></h2>
 <br>
+<img src="<%= @journal.tree.image %>">
 <br>
 Date Watered: <%= @journal.date_watered %>
 <br>
@@ -13,7 +14,7 @@ Notes: <%= @journal.notes %>
 <% if Helper.is_logged_in?(session) %>
 <%= @error %>
     <br>
-    <a href="/journals/<%= @journal.id%>/edit">Journal Tree</a>
+    <a href="/journals/<%= @journal.id%>/edit">Edit Journal entry</a>
     <br>
     <form action='/journals/<%= @journal.id %>/delete' method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">    

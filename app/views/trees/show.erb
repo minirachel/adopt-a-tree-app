@@ -5,10 +5,16 @@
 NYC Parks ID #<%= @tree.tree_map_no %>
 <br>
 Species: <%= @tree.species %></ul>
+<br>
+<br>
+Journal Entries:<br>
+    <% @tree.journals.each do |journal| %>
+        <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%></a> - <%= journal.notes %></ul><br>
+    <% end %>
 
 <% if Helper.is_logged_in?(session) %>
 <%= @error %>
-    <a href="/journals/new">Add a Journal Entry</a>
+    <a href="/journals/new">Add a Journal Entry</a><br>
     <br>
     <a href="/trees/<%= @tree.id%>/edit">Edit Tree</a>
     <br>
