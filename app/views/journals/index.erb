@@ -1,9 +1,0 @@
-
-<h1>All Journal Entries</h1>
-<% @journals.each do |journal| %>
-    <img src="<%= journal.tree.image%>"
-    <h3><%= journal.journal_time %> - <%= journal.user.username %></h3><br>
-    <p>Date Watered: <%= journal.date_watered %></p><br>
-    <p>Activities Achieved: <%= journal.activities %></p>
-    <p><a href="/journals/id"></a></p>
-<% end %>
