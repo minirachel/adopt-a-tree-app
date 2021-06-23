@@ -1,3 +1,4 @@
+
 @media screen {
   /* --- Reset Styles --- */
   * {
@@ -47,6 +48,7 @@
 
   .logo {
     float: left;
+    font-family: 'Josefin Slab', serif;
   }
 
   h1 {
@@ -59,7 +61,6 @@
     /* border-bottom: 2px solid #ccc; */
     font-size: 24px;
     line-height: 36px;
-    margin-bottom: 16px;
   }
 
   h3 {
@@ -73,6 +74,10 @@
 
   a {
     color: #3680C1;
+  }
+
+  ul{
+    line-height: 1.5;
   }
 
   img {
@@ -114,18 +119,35 @@
   .user {
     float: right;
     position: sticky;
+    line-height: 60px;
   }
 
   .user a {
     margin: 20px;
-  }
-
-  form {
-    margin-top: 40px;
+    text-decoration: none;
   }
 
   input {
-    padding-left: 10px;
+    padding: 10px 10px;
+  }
+
+  select {
+    padding: 10px 10px;
+    border: none;
+  }
+
+  input[type=button], input[type=submit] {
+    padding: 10px 10px;
+    border: none;
+    background-color:#22A53B;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .buttons {
+    display: block;
+    float: left;
+    margin-right: 25px;
   }
 
   /* .sidebar {

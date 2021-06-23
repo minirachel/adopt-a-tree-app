@@ -1,6 +1,6 @@
 <% if Helper.is_logged_in?(session)%>
 <%= @error %>
-    <h1>Edit your Journal</h1>
+    <div class="title">Edit your Journal</div>
     <form action="/journals" method="POST">
         <input id="hidden" type="hidden" name="_method" value="patch">
         <select name="tree_id">

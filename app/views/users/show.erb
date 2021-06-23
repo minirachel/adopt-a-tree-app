@@ -1,15 +1,23 @@
-<h1>Hi, <%= @user.username %></h1>
+<div class="title">Hi, <%= @user.username %></div>
 <h2>Your Trees</h2>
-<br>
-<a href="/trees/new">add tree</a>
+<!-- <div class="buttons"> -->
+    <form action='/trees/new' method="get">
+        <input type="submit" id="Add Tree" value="Add Tree">
+    </form>
+    <!-- </div> -->
 <br>
 <% @user.trees.each do |user_tree|%>
     <ul><a href="/trees/<%= user_tree.id %>"> <%= user_tree.nickname%></a></ul>
 <% end%>
 <br>
-<h2>Your Journal Entries</h2> 
 
-<a href="/journals/new">add journal</a>
+
+<h2>Your Journal Entries</h2> 
+    <!-- <div class="buttons"> -->
+        <form action='/journals/new' method="get">
+            <input type="submit" id="Add Journal" value="Add Journal">
+        </form>
+    <!-- </div> -->
 <br>
 <% @user.journals.each do |journal|%>
     <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%> - <%= journal.notes %></a></ul>

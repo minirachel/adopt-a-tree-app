@@ -21,12 +21,18 @@
 <% if Helper.clearance?(session, @journal) %>
 <%= @error %>
     <br>
-    <a href="/journals/<%= @journal.id%>/edit">Edit Journal entry</a>
-    <br>
+    <div class="buttons">
+    <form action='/journals/<%= @journal.id%>/edit' method="get">
+        <input type="submit" id="Edit Journal" value="Edit Journal">
+    </form>
+    </div>
+
+    <div class="buttons">
     <form action='/journals/<%= @journal.id %>/delete' method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">    
         <input type="submit" id="Delete Tree" value="Delete Tree">
     </form>
+    </div>
 <% else %>
 
 <% end %>

@@ -1,8 +1,16 @@
-<h1>Create a New Tree</h1>
+<div class="title">Create a New Tree</div>
 <form action="/trees" method="POST">
+    <label for="nickname">Tree's Nickname: </label><br>
     <input type="text" name="nickname" placeholder="Tree's Nickname"><br><br>
+    
+    <label for="image">Image URL: </label><br>
     <input type="text" name="image" placeholder="Image URL"><br><br>
+    
+    <label for="tree_map_no"><a href="https://tree-map.nycgovparks.org/" target="_blank">NYC Tree Map</a> ID:</label><br>
     <input type="text" name="tree_map_no" placeholder="NYC Tree Map ID"><br><br>
+    
+    <label for="species">Species: </label><br>
     <input type="text" name="species" placeholder="Tree Species"><br><br>
+    
     <input type="submit" value="Create a Tree!">
 </form>
