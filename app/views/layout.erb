@@ -13,28 +13,33 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
+
   <body>
     <div class="wrapper">
       <header>
         <div class="logo">
-           <h1>Adopt-A-Tree</h1>
+           <h1><a href="/">Adopt-A-Tree</a></h1>
         </div>
         
         <% if Helper.is_logged_in?(session)%>
         <%= @error %>
-          <div class="user"><a href="/dashboard">dashboard</a></div>
-          <div class="user"><a href="/logout">logout</a></div>
+          <div class="user"><a href="/dashboard">dashboard</a>
+          <a href="/logout">logout</a></div>
         <% else %>
-          <div class="user"><a href="/login">login</a></div>
-          <div class="user"><a href="/signup">sign up</a></div>
+          <div class="user"><a href="/login">login</a>
+          <a href="/signup">sign up</a></div>
         <% end %>
 
       </header>
-      <div class="banner">
+      
+      
         <% if flash.has?(:message) %>
+          <div class="banner">  
           <%= flash[:message] %>
+          </div>
         <% end %>
-      </div>
+     
+
         <%= yield %>
 
       <footer class="branding">

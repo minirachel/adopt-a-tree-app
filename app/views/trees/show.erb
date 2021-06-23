@@ -1,18 +1,21 @@
-<h1>About <%= @tree.nickname %></h1>
 
-<img src="<%= @tree.image %>">
+<div class="title">About <%= @tree.nickname %></div>
+
+<div class="banner_image"><img src="<%= @tree.image %>"></div>
 <br>
-NYC Parks ID #<%= @tree.tree_map_no %>
-<br>
-Species: <%= @tree.species %></ul>
+<b>NYC Parks ID:</b> #<%= @tree.tree_map_no %>
 <br>
 <br>
-Journal Entries:<br>
+<b>Species:</b> <%= @tree.species %>
+<br>
+<br>
+<b>Journal Entries:</b>
+<br>
     <% @tree.journals.each do |journal| %>
-        <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%></a> - <%= journal.notes %></ul><br>
+        <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%></a> : "<i><%= journal.notes %></i>"</ul><br>
     <% end %>
 
-<% if Helper.is_logged_in?(session) %>
+<% if Helper.clearance?(session, @tree) %>
 <%= @error %>
     <form action='/journals/new' method="get">
         <input id="hidden" type="hidden" name="tree_id" value="<%= @tree.id %>"> 

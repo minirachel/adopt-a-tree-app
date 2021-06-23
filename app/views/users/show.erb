@@ -7,7 +7,9 @@
     <ul><a href="/trees/<%= user_tree.id %>"> <%= user_tree.nickname%></a></ul>
 <% end%>
 <br>
-<h2>Recent Journal Entries</h2> <a href="/journals/new">add journal</a>
+<h2>Your Journal Entries</h2> 
+
+<a href="/journals/new">add journal</a>
 <br>
 <% @user.journals.each do |journal|%>
     <ul><a href="/journals/<%= journal.id %>"> <%= journal.journal_time%> - <%= journal.notes %></a></ul>

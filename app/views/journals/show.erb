@@ -1,17 +1,24 @@
 
-<h2><%= @user.username %> - <%= @journal.journal_time %></h2>
+<div class="title">
+    Entry by <%= @user.username %> on <%= @journal.journal_time %>
+</div>
+
+<div class="article">
 <br>
 <img src="<%= @journal.tree.image %>">
 <br>
-Date Watered: <%= @journal.date_watered %>
+<b>Date Watered:</b> <%= @journal.date_watered %>
 <br>
-Activities Achieved: <%= @journal.activities %>
+<b>Activities Achieved:</b> <%= @journal.activities %>
 <br>
-Health: <%= @journal.health_rating %> Litter: <%= @journal.litter_rating %>
+<b>Health:</b> <%= @journal.health_rating %>
 <br>
-Notes: <%= @journal.notes %>
+<b>Litter:</b> <%= @journal.litter_rating %>
+<br>
+<b>Notes:</b> <%= @journal.notes %>
+</div>
 
-<% if Helper.is_logged_in?(session) %>
+<% if Helper.clearance?(session, @journal) %>
 <%= @error %>
     <br>
     <a href="/journals/<%= @journal.id%>/edit">Edit Journal entry</a>

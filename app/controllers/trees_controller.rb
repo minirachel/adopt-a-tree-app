@@ -29,8 +29,9 @@ class TreesController < ApplicationController
     end
 
     get '/trees/:id' do
+        @tree = Tree.find(params[:id])
+
         if Helper.is_logged_in?(session)
-            @tree = Tree.find(params[:id])
             erb :'/trees/show'
         else
             redirect to '/login'

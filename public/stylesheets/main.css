@@ -19,26 +19,6 @@
     line-height: 18px;
   }
 
-  header {
-    height: 60px;
-  }
-
-  .banner {
-    max-height: 20px;
-    background-color:crimson;
-    color: #fff;
-    line-height: 10px;
-    text-align: center;
-  }
-
-  .logo {
-    float: left;
-  }
-
-  .user {
-    float: right;
-  }
-
   .wrapper {
     /* background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -48,6 +28,25 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+  }
+
+
+  header {
+    height: 60px;
+  }
+
+  .banner {
+    height: 30px;
+    padding-top: auto;
+    padding-bottom: auto;
+    background-color:crimson;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .logo {
+    float: left;
   }
 
   h1 {
@@ -78,7 +77,14 @@
 
   img {
     max-height: 400px;
+    max-width: 400px;
   }
+
+  body > div> header> div.logo > h1 > a{
+    text-decoration: none;
+    color: #22A53B;
+  }
+  /* body > div > header > div.logo > h1 > a */
 
   .main {
     overflow: hidden;
@@ -89,28 +95,54 @@
     width: 60%; /* 480px / 800px */
   }
 
+  .parks {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 16px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  .article {
+    line-height: 1.5;
+  }
+
   .user {
     float: right;
     position: sticky;
+  }
+
+  .user a {
     margin: 20px;
   }
 
-  .sidebar {
+  form {
+    margin-top: 40px;
+  }
+
+  input {
+    padding-left: 10px;
+  }
+
+  /* .sidebar {
     background: #eee;
     border: 1px solid #ccc;
     float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
+    padding: 2.08333333333%; /* 5px / 240px */ /*
     width: 30%; /* 240px / 800px */
-  }
+  /*} */
 
-  .sidebar ul {
+  /* .sidebar ul {
     font-size: 14px;
-  }
+  } */
 
   .branding {
     clear: both;
   }
-
 
   footer.branding {
     /* border-top: 2px solid #ccc; */
