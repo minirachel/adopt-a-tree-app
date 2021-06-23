@@ -23,6 +23,14 @@
     height: 60px;
   }
 
+  .banner {
+    max-height: 20px;
+    background-color:crimson;
+    color: #fff;
+    line-height: 10px;
+    text-align: center;
+  }
+
   .logo {
     float: left;
   }

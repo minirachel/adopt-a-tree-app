@@ -14,7 +14,10 @@ Journal Entries:<br>
 
 <% if Helper.is_logged_in?(session) %>
 <%= @error %>
-    <a href="/journals/new">Add a Journal Entry</a><br>
+    <form action='/journals/new' method="get">
+        <input id="hidden" type="hidden" name="tree_id" value="<%= @tree.id %>"> 
+        <input type="submit" id="Add Journal" value="Add Journal">
+    </form>
     <br>
     <a href="/trees/<%= @tree.id%>/edit">Edit Tree</a>
     <br>

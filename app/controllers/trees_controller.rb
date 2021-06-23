@@ -38,18 +38,19 @@ class TreesController < ApplicationController
     end
 
     get '/trees/:id/edit' do
-        if Helper.is_logged_in?(session)
-            @tree = Tree.find(params[:id])
+        @tree = Tree.find(params[:id])
+
+        if Helper.clearance?(session, @tree)
             erb :'trees/edit'
         else
-            redirect to '/login'
+            redirect to '/dashboard'
         end
     end
 
     patch '/trees/:id/edit' do
         @tree = Tree.find(params[:id])
 
-        if Helper.current_user(session).id == @tree.user_id
+        if Helper.clearance?(session, @tree)
             @tree.update(params)
             redirect to '/trees'
         else
@@ -61,9 +62,8 @@ class TreesController < ApplicationController
 
     delete '/trees/:id/delete' do
         @tree = Tree.find(params[:id])
-    
 
-        if Helper.current_user(session).id == @tree.user_id
+        if Helper.clearance?(session, @tree)
             @tree.delete
             redirect to '/trees'
         else
@@ -71,8 +71,6 @@ class TreesController < ApplicationController
             flash[:message] = "You do not have permission to delete!"    
         end
     end
-
-
 
 
 end

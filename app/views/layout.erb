@@ -19,6 +19,7 @@
         <div class="logo">
            <h1>Adopt-A-Tree</h1>
         </div>
+        
         <% if Helper.is_logged_in?(session)%>
         <%= @error %>
           <div class="user"><a href="/dashboard">dashboard</a></div>
@@ -27,7 +28,13 @@
           <div class="user"><a href="/login">login</a></div>
           <div class="user"><a href="/signup">sign up</a></div>
         <% end %>
+
       </header>
+      <div class="banner">
+        <% if flash.has?(:message) %>
+          <%= flash[:message] %>
+        <% end %>
+      </div>
         <%= yield %>
 
       <footer class="branding">

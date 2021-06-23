@@ -1,9 +1,12 @@
+require 'rack-flash'
+
 class JournalsController < ApplicationController
     enable :sessions
+    use Rack::Flash
 
     get '/journals' do
         @journals = Journal.all
-        erb :'journals/index'
+        redirect to '/dashboard'
     end
 
     get '/journals/new' do
@@ -16,14 +19,16 @@ class JournalsController < ApplicationController
     end
 
     post '/journals' do
-        if params[:tree_id] != "" && params[:activities] != ""
-            # @user = Helper.current_user(session)
-            # @tree = @user.trees.find_by(params[:tree_id])
+        if Journal.new(params).valid?
+
             @journal = Journal.create(params)
 
             @user = Helper.current_user(session)
             @journal.user_id = @user.id
             @journal.journal_time = Time.now.strftime("%F")
+
+            @journal.activities = params[:activities] 
+
             @journal.save
 
             redirect to '/journals'
@@ -46,7 +51,7 @@ class JournalsController < ApplicationController
     delete '/journals/:id/delete' do
         @journal = Journal.find(params[:id])
 
-        if Helper.current_user(session).id == @journal.user_id
+        if Helper.clearance?(session, @journal)
             @journal.delete
             redirect to '/trees'
         else
@@ -56,9 +61,10 @@ class JournalsController < ApplicationController
     end
 
     get '/journals/:id/edit' do
-        if Helper.is_logged_in?(session)
+        @journal = Journal.find(params[:id])
+
+        if Helper.clearance?(session, @journal)
             @user = Helper.current_user(session)
-            @journal = Journal.find(params[:id])
             erb :'journals/edit'
         else
             redirect to '/login'
@@ -68,8 +74,10 @@ class JournalsController < ApplicationController
     patch '/journals/:id/edit' do
         @journal = Journal.find(params[:id])
 
-        if params[:tree_id] != "" && params[:activities] != ""
+        if Helper.clearance?(session, @journal)
             @journal.update(params)
+            @journal.activities = params[:activities] 
+            @journal.save
             redirect to '/journals'
         else
             redirect to "/journals/#{@journal.id}/edit"
