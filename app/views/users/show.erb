@@ -24,7 +24,9 @@
 <% end %>
 <h2>Recently Added Trees</h2> 
 <br>
-<% @trees.each do |tree|%>
+<div class="tree_grid">
+<% @recent_trees.each do |tree|%>
     <a href="/trees/<%= tree.id %>"><img src="<%=tree.image%>"></a>
 <% end %>
+</div>
 <br>

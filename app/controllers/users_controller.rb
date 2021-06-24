@@ -13,13 +13,16 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if User.new(params).valid?
-            @user = User.create(params)
+        @user = User.new(params)
+
+        if @user.save
             session[:user_id] = @user.id
             redirect to '/dashboard'
         else
+            # flash[:message] = "This email is User already associated with an account. Please login."
+            flash[:message] = @user.errors.full_messages.join(", ")
+            
             redirect to '/signup'
-            flash[:message] = "This email is Useralready associated with an account. Please login."
         end
     end
 
@@ -56,6 +59,7 @@ class UsersController < ApplicationController
         if Helper.is_logged_in?(session)
             @user = Helper.current_user(session)
             @trees = Tree.all
+            @recent_trees = @trees.reverse
             @journals = Journal.all
 
             erb :'users/show'

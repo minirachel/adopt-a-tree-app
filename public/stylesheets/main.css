@@ -100,6 +100,15 @@
     width: 60%; /* 480px / 800px */
   }
 
+  .about {
+    max-width: 500px;
+    margin: 40px auto 20px auto;
+    font-size: 30px;
+    text-align: right;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
   .parks {
     text-align: center;
   }
@@ -148,6 +157,16 @@
     display: block;
     float: left;
     margin-right: 25px;
+  }
+
+  .tree_grid{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tree_grid img {
+    height: 250px;
+    padding: 10px;
   }
 
   /* .sidebar {

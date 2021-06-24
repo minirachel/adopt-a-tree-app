@@ -6,6 +6,7 @@ class TreesController < ApplicationController
 
     get '/trees' do
         @trees = Tree.all
+        @recent_trees = @trees.reverse
         erb :'trees/index'
     end
 
