@@ -54,7 +54,7 @@ class JournalsController < ApplicationController
 
         if Helper.clearance?(session, @journal)
             @journal.delete
-            redirect to '/trees'
+            redirect to '/dashboard'
         else
             redirect to "/journals/#{@journal.id}"
             flash[:message] = "You do not have permission to delete!"    
@@ -79,7 +79,7 @@ class JournalsController < ApplicationController
             @journal.update(params)
             @journal.activities = params[:activities] 
             @journal.save
-            redirect to '/journals'
+            redirect to '/dashboard'
         else
             redirect to "/journals/#{@journal.id}/edit"
             flash[:message] = "Please type something to change your Tree!"

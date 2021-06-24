@@ -53,7 +53,7 @@ class TreesController < ApplicationController
         @tree = Tree.find(params[:id])
 
         if Helper.clearance?(session, @tree)
-            @tree.update(params)
+            @tree.update(params[:tree_info])
             redirect to '/trees'
         else
             redirect to "/trees/#{@tree.id}/edit"
@@ -67,7 +67,7 @@ class TreesController < ApplicationController
 
         if Helper.clearance?(session, @tree)
             @tree.delete
-            redirect to '/trees'
+            redirect to '/dashboard'
         else
             redirect to "/trees/#{@tree.id}"
             flash[:message] = "You do not have permission to delete!"    

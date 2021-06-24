@@ -169,6 +169,11 @@
     padding: 10px;
   }
 
+  .tree_index {
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+
   /* .sidebar {
     background: #eee;
     border: 1px solid #ccc;
